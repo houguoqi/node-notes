@@ -6,7 +6,9 @@ import router from './router'
 import Vant from 'vant'; // Vant组件库
 import 'vant/lib/index.css';
 import "lib-flexible/flexible.js" // rem适配
+import less from 'less'
 
+Vue.use(less)
 Vue.use(Vant);
 Vue.config.productionTip = false
 

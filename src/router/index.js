@@ -27,13 +27,13 @@ const router = new Router({
 
 // 全局前置守卫
 router.beforeEach((to, from, next) => {
-    // 如果用户输入的是login页面 直接放行
-    if (to.path === '/login') return next()
-    // 查看客户端是否有token值
-    const tokenStr = window.sessionStorage.getItem('token')
-    // 如果没有token 则直接跳转到登录页
-    if (!tokenStr) return next('/login')
-    // 有token放行
+    // // 如果用户输入的是login页面 直接放行
+    // if (to.path === '/login') return next()
+    // // 查看客户端是否有token值
+    // const tokenStr = window.sessionStorage.getItem('token')
+    // // 如果没有token 则直接跳转到登录页
+    // if (!tokenStr) return next('/login')
+    // // 有token放行
     next()
 })
 
