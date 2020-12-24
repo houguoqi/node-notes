@@ -7,15 +7,21 @@ import Vant from 'vant'; // Vant组件库
 import 'vant/lib/index.css';
 import "lib-flexible/flexible.js" // rem适配
 import less from 'less'
+import store from "./store/index"; // 暴露全局store
+
+Vue.prototype.$store = store
 
 Vue.use(less)
 Vue.use(Vant);
 Vue.config.productionTip = false
 
+console.log(process.env, "process.env.VUE_APP_BASE_URL")
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

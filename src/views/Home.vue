@@ -16,6 +16,8 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       activeName: '1'
     }
+  },
+  mounted() {
   }
 }
 </script>
