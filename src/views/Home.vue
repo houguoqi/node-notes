@@ -5,8 +5,8 @@
             left-text="返回"
             right-text="登录"
             left-arrow
-            fixed="true"
-            placeholder="true"
+            :fixed="isFixed"
+            :placeholder="isPlaceHolder"
         />
         <form action="/">
             <van-search
@@ -23,9 +23,11 @@
             finished-text="没有更多了"
             @load="onLoad"
             >
-            <van-cell v-for="item in list" :key="item" :title="item" />
+            <van-cell-group v-for="(item, index) in list" :key="index" >
+                <van-cell :title="item.blog_title" :value="item.createdate" :label="item.blog_content" />
+            </van-cell-group>
         </van-list>
-        <van-tabbar route fixed="true">
+        <van-tabbar route :fixed="isFixed">
             <van-tabbar-item replace to="/home" icon="home-o">标签</van-tabbar-item>
             <van-tabbar-item replace to="/login" icon="search">标签</van-tabbar-item>
         </van-tabbar>
@@ -33,14 +35,18 @@
 </template>
 
 <script>
+import { getAllBlogs } from "@/http/api.js";
 export default {
   name: 'Home',
   data () {
     return {
+      isFixed: true,
+      isPlaceHolder: true,
       list: [],
       loading: false,
       finished: false,
-      value: ''
+      value: '',
+      page: 1
     }
   },
   mounted() {
@@ -52,24 +58,20 @@ export default {
     onCancel() {
         Toast('取消');
     },
-    onLoad() {
-        // 异步更新数据
-        // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-        setTimeout(() => {
-            for (let i = 0; i < 10; i++) {
-                this.list.push(this.list.length + 1);
-                }
-
-                // 加载状态结束
-                this.loading = false;
-
-                // 数据全部加载完成
-                if (this.list.length >= 40) {
-                this.finished = true;
-                }
-            }, 1000);
-        },
+    async onLoad() {
+        await getAllBlogs({
+            page: this.page
+        }).then(res => {
+            console.log(res)
+            if (!res.data.result.length) this.finished = true
+            this.list = this.list.concat(res.data.result)
+            this.loading = false
+            this.page++
+        }).catch(err => {
+            console.log(err)
+        })
     }
+  }
 }
 </script>
 
