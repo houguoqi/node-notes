@@ -1,5 +1,12 @@
 <template>
-    <van-form @submit="onSubmit">
+    <van-form @submit="onSubmit" style="text-align:center;">
+        <van-nav-bar
+            title="登录"
+            left-text="返回"
+            left-arrow
+            fixed="true"
+            placeholder="true"
+        />
         <img src="../assets/timg.gif" alt="">
         <van-field
             v-model="username"
@@ -21,6 +28,10 @@
             提交
             </van-button>
         </div>
+        <van-tabbar route fixed="true">
+            <van-tabbar-item replace to="/home" icon="home-o">标签</van-tabbar-item>
+            <van-tabbar-item replace to="/login" icon="search">标签</van-tabbar-item>
+        </van-tabbar>
     </van-form>
 </template>
 <script>
