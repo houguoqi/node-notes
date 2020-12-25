@@ -9,3 +9,8 @@ export const login = (data) => {
 export const getAllBlogs = (params) => {
     return get('/get_all_blogs', params)
 }
+
+// 获取七牛token
+export const getQiniuToken = () => {
+    return get('https://www.hgqweb.cn/wxinterface/getToken.php')
+}

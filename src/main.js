@@ -8,8 +8,11 @@ import 'vant/lib/index.css';
 import "lib-flexible/flexible.js" // rem适配
 import less from 'less'
 import store from "./store/index"; // 暴露全局store
+import axios from "axios";
 
 Vue.prototype.$store = store
+Vue.prototype.$http = axios
+
 
 Vue.use(less)
 Vue.use(Vant);

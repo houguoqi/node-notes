@@ -2,11 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const Home = () => import('../views/Home.vue')
 const Login = () => import('../views/Login.vue')
+const Edit = () => import('../views/Edit.vue')
 
 Vue.use(Router)
 
 const router = new Router({
-    mode: 'history', // 使用history模式(但有可能404)
+    // mode: 'history', // 使用history模式(但有可能404)
     routes: [
         {
             path: '/',
@@ -21,6 +22,11 @@ const router = new Router({
             path: '/login',
             name: 'Login',
             component: Login
+        },
+        {
+            path: '/edit',
+            name: 'Edit',
+            component: Edit
         }
     ]
 })
