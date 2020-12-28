@@ -8,13 +8,9 @@ const store = new Vuex.Store({
         count: 0,
         token: '' // 用户登录凭证（一般都会有这个）
     },
-    getter: {
-        getCount: (state, getters) => {
-            return state.count
-        },
-        getToken: (state) => {
-            return state.token
-        }
+    getters: {
+        count: (state) => state.count,
+        token: (state) => state.token
     },
     mutations: {
         addCount (state, payload) {

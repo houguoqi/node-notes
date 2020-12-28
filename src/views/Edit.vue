@@ -1,5 +1,6 @@
 <template>
     <div>
+        <head-bar title="发表"></head-bar>
         <van-uploader
             v-model="fileList"
             multiple
@@ -7,12 +8,20 @@
         />
         <van-button type="primary" @click="upload">点击上传</van-button>
         <van-loading v-show="isLoading" class="loading" type="spinner" color="#1989fa" vertical>上传中...</van-loading>
+        <foot-bar></foot-bar>
     </div>
 </template>
 <script>
 import { getQiniuToken } from "@/http/api.js";
+import footBar from "@/components/footBar.vue";
+import headBar from "@/components/headBar.vue";
 import { Toast } from 'vant';
 export default {
+    name: 'Edit',
+    components: {
+        footBar,
+        headBar
+    },
     data () {
         return {
             fileList: [],

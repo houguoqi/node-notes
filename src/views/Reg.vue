@@ -1,7 +1,7 @@
 <template>
     <van-form @submit="onSubmit" style="text-align:center;">
-        <head-bar title="登录"></head-bar>
-        <img src="../assets/timg.gif" alt="">
+        <head-bar title="注册"></head-bar>
+        <!-- <img src="../assets/timg.gif" alt=""> -->
         <van-field
             v-model="username"
             name="username"
@@ -19,12 +19,7 @@
         />
         <div style="margin: 16px;">
             <van-button round block type="info" native-type="submit">
-            登录
-            </van-button>
-        </div>
-         <div style="margin: 16px;">
-            <van-button round block type="info" @click="$router.push('/reg')">
-            注册
+            提交
             </van-button>
         </div>
         <foot-bar></foot-bar>
@@ -33,9 +28,10 @@
 <script>
 import footBar from "@/components/footBar.vue";
 import headBar from "@/components/headBar.vue";
-import { login, reg } from "@/http/api.js";
+import { Toast, Dialog } from 'vant';
+import {  reg } from "@/http/api.js";
 export default {
-    name: 'Login',
+    name: 'Reg',
     components: {
         footBar,
         headBar
@@ -49,19 +45,21 @@ export default {
     methods: {
         onSubmit(values) {
             console.log('submit', values);
-            login({
+            reg({
                 username: values.username,
                 password: values.password
             }).then(res => {
                 console.log(res)
-                // 将token存在sessionStorage-过期或关闭窗口即失效
-                window.sessionStorage.setItem('token', res.token)
-                this.$store.commit('setToken', res.token)
-                const user_id = res.userInfo.id
-                window.sessionStorage.setItem('user_id', user_id)
-                this.$router.push({ name: 'Mine', params: { user_id }})
+                if (res.code !== 200) {
+                    Toast(res.message)
+                } else {
+                    Dialog.confirm({ title: res.message, message: '是否前往登录' }).then(() => {
+                        this.$router.push('/login')
+                    });
+                }
             }).catch(err => {
                 console.log(err)
+                Toast(err.message);
             })
         },
     },

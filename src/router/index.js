@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const Home = () => import('../views/Home.vue') // 路由懒加载
 const Login = () => import('../views/Login.vue')
+const Reg = () => import('../views/Reg.vue')
+const Mine = () => import('../views/Mine.vue')
 const Edit = () => import('../views/Edit.vue')
 
 Vue.use(Router)
@@ -19,9 +21,19 @@ const router = new Router({
             component: Home
         },
         {
+            path: '/mine',
+            name: 'Mine',
+            component: Mine
+        },
+        {
             path: '/login',
             name: 'Login',
             component: Login
+        },
+        {
+            path: '/reg',
+            name: 'Reg',
+            component: Reg
         },
         {
             path: '/edit',
@@ -33,13 +45,13 @@ const router = new Router({
 
 // 全局前置守卫
 router.beforeEach((to, from, next) => {
-    // // 如果用户输入的是login页面 直接放行
-    // if (to.path === '/login') return next()
-    // // 查看客户端是否有token值
-    // const tokenStr = window.sessionStorage.getItem('token')
-    // // 如果没有token 则直接跳转到登录页
-    // if (!tokenStr) return next('/login')
-    // // 有token放行
+    // 如果用户输入的是login页面 直接放行
+    if (to.path === '/login') return next()
+    // 查看客户端是否有token值
+    const tokenStr = window.sessionStorage.getItem('token')
+    // 如果没有token 则直接跳转到登录页
+    if (!tokenStr) return next('/login')
+    // 有token放行
     next()
 })
 

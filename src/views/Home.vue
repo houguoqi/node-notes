@@ -1,13 +1,6 @@
 <template>
     <div class="home">
-        <van-nav-bar
-            title="首页"
-            left-text="返回"
-            right-text="登录"
-            left-arrow
-            :fixed="isFixed"
-            :placeholder="isPlaceHolder"
-        />
+        <head-bar title="首页"></head-bar>
         <form action="/">
             <van-search
                 v-model="value"
@@ -27,21 +20,22 @@
                 <van-cell :title="item.blog_title" :value="item.createdate" :label="item.blog_content" />
             </van-cell-group>
         </van-list>
-        <van-tabbar route :fixed="isFixed">
-            <van-tabbar-item replace to="/home" icon="home-o">标签</van-tabbar-item>
-            <van-tabbar-item replace to="/login" icon="search">标签</van-tabbar-item>
-        </van-tabbar>
+        <foot-bar></foot-bar>
     </div>
 </template>
 
 <script>
 import { getAllBlogs } from "@/http/api.js";
+import footBar from "@/components/footBar.vue";
+import headBar from "@/components/headBar.vue";
 export default {
   name: 'Home',
+  components: {
+      footBar,
+      headBar
+  },
   data () {
     return {
-      isFixed: true,
-      isPlaceHolder: true,
       list: [],
       loading: false,
       finished: false,
