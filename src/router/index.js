@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const Home = () => import('../views/Home.vue')
+const Home = () => import('../views/Home.vue') // 路由懒加载
 const Login = () => import('../views/Login.vue')
 const Edit = () => import('../views/Edit.vue')
 
