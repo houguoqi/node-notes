@@ -65,7 +65,7 @@ export default {
                     formData.append('file', ele.file);
                     formData.append('token', this.token);
                     this.$http({
-                        url: 'http://up-z0.qiniup.com/', // 华东地区
+                        url: 'https://up-z0.qiniup.com/', // 华东地区
                         method: 'post',
                         data: formData
                     }).then(res => {
