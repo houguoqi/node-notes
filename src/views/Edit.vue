@@ -1,18 +1,34 @@
 <template>
     <div>
         <head-bar title="发表"></head-bar>
-        <van-uploader
-            v-model="fileList"
-            multiple
-            max-count="9"
-        />
-        <van-button type="primary" @click="upload">点击上传</van-button>
+        <van-form>
+            <van-field v-model="title" label="标题" placeholder="请输入标题" />
+            <van-field
+                v-model="content"
+                rows="5"
+                autosize
+                label="内容"
+                type="textarea"
+                maxlength="100"
+                placeholder="请输入内容"
+                show-word-limit
+            />
+            <van-uploader
+                v-model="fileList"
+                multiple
+                max-count="9"
+            />
+            <!-- <van-button type="primary" @click="upload">点击上传</van-button> -->
+            <div style="margin: 16px;">
+                <van-button type="primary" @click="upload">点击提交</van-button>
+            </div>
+        </van-form>
         <van-loading v-show="isLoading" class="loading" type="spinner" color="#1989fa" vertical>上传中...</van-loading>
         <foot-bar></foot-bar>
     </div>
 </template>
 <script>
-import { getQiniuToken } from "@/http/api.js";
+import { getQiniuToken, createBlog } from "@/http/api.js";
 import footBar from "@/components/footBar.vue";
 import headBar from "@/components/headBar.vue";
 import { Toast } from 'vant';
@@ -28,7 +44,9 @@ export default {
             token: '',
             url_es: 'http://hgqweb.cn/',
             resultQiniuImgages: [],
-            isLoading: false
+            isLoading: false,
+            title: '',
+            content: ''
         }
     },
     mounted() {
@@ -53,6 +71,22 @@ export default {
                     }).then(res => {
                         if (res.data.key) {
                             this.resultQiniuImgages.push(this.url_es + res.data.key)
+                            // 长度相同说明上传完成
+                            if(this.resultQiniuImgages.length === this.fileList.length) {
+                                Toast.success('上传成功');
+                                console.log(this.resultQiniuImgages, this.title, this.content)
+                                this.isLoading = false
+                                createBlog({
+                                    blog_title: this.title,
+                                    blog_content: this.content,
+                                    photos: JSON.stringify(this.resultQiniuImgages),
+                                    user_id: window.sessionStorage.getItem('user_id')
+                                }).then(res => {
+                                    console.log(res)
+                                }).catch(err => {
+                                    console.log(err)
+                                })
+                            }
                         } else {
                             Toast.fail('上传失败');
                             return false
@@ -63,9 +97,6 @@ export default {
                         return false
                     })
                 })
-                Toast.success('上传成功');
-                console.log(this.resultQiniuImgages)
-                this.isLoading = false
             }
         }
     }

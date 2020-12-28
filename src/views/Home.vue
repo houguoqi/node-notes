@@ -18,6 +18,7 @@
             >
             <van-cell-group v-for="(item, index) in list" :key="index" >
                 <van-cell :title="item.blog_title" :value="item.createdate" :label="item.blog_content" />
+                <img class="blog_photos" v-for="(img, img_index) in item.photos" :key="img_index" :src="img" alt="">
             </van-cell-group>
         </van-list>
         <foot-bar></foot-bar>
@@ -71,5 +72,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.blog_photos {
+    width: 30%;
+    margin: 1%;
+}
 </style>

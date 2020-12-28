@@ -24,3 +24,8 @@ export const getMineInfo = (params) => {
 export const getQiniuToken = () => {
     return get('https://www.hgqweb.cn/wxinterface/getToken.php')
 }
+
+// 发表
+export const createBlog = (params) => {
+    return get('/add_blog', params)
+}

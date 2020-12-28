@@ -1,9 +1,38 @@
 <template>
     <div>
         <head-bar title="我的"></head-bar>
-        user_id：{{userInfo.user_id}}
         name：{{userInfo.username}}
         createdate{{userInfo.createdate}}
+         <div style="margin: 16px;">
+            <van-button round block type="info" @click="createBlog">
+            发表
+            </van-button>
+        </div>
+        <van-grid clickable :column-num="3">
+            <van-grid-item>
+                <van-icon name="chat-o" size="40px" color="#1989fa" />
+                <span>记事本</span>
+            </van-grid-item>
+              <van-grid-item>
+                <van-icon name="chat-o" size="40px" color="#1989fa" />
+                <span>记事本</span>
+            </van-grid-item>
+              <van-grid-item>
+                <van-icon name="chat-o" size="40px" color="#1989fa" />
+                <span>记事本</span>
+            </van-grid-item>
+              <van-grid-item>
+                <van-icon name="chat-o" size="40px" color="#1989fa" />
+                <span>记事本</span>
+            </van-grid-item>  <van-grid-item>
+                <van-icon name="chat-o" size="40px" color="#1989fa" />
+                <span>记事本</span>
+            </van-grid-item>
+              <van-grid-item>
+                <van-icon name="chat-o" size="40px" color="#1989fa" />
+                <span>记事本</span>
+            </van-grid-item>
+        </van-grid>
         <foot-bar></foot-bar>
     </div>
 </template>
@@ -20,13 +49,14 @@ export default {
     data () {
         return {
             user_id: '',
-            userInfo: null
+            userInfo: {}
         }
     },
     mounted() {
         // 获取路由参数
         console.log(this.$route)
         this.user_id = this.$route.params.user_id ? this.$route.params.user_id : window.sessionStorage.getItem('user_id')
+        // this.user_id = window.sessionStorage.getItem('user_id')
         getMineInfo({
             user_id: this.user_id
         }).then(res => {
@@ -35,6 +65,16 @@ export default {
         }).catch(err => {
             console.log(err)
         })
+    },
+    methods: {
+        createBlog() {
+            this.$router.push({
+                name: 'Edit',
+                params: {
+                    user_id: this.user_id
+                }
+            })
+        }
     }
 }
 </script>
