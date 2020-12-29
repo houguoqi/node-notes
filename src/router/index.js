@@ -47,8 +47,9 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
     // 如果用户输入的是login页面 直接放行
     if (to.path === '/login') return next()
+    if (to.path === '/reg') return next()
     // 查看客户端是否有token值
-    const tokenStr = window.sessionStorage.getItem('token')
+    const tokenStr = window.localStorage.getItem('token')
     // 如果没有token 则直接跳转到登录页
     if (!tokenStr) return next('/login')
     // 有token放行

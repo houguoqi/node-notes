@@ -5,11 +5,13 @@ import App from './App'
 import router from './router'
 import Vant from 'vant'; // Vant组件库
 import 'vant/lib/index.css';
+import 'vant/lib/icon/local.css';
 import "lib-flexible/flexible.js" // rem适配
 import less from 'less'
 import store from "./store/index"; // 暴露全局store
 import axios from "axios";
 
+import './public/index.css' // 引入公共css
 Vue.prototype.$store = store
 Vue.prototype.$http = axios
 

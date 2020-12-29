@@ -6,6 +6,7 @@
                 v-model="value"
                 show-action
                 placeholder="请输入搜索关键词"
+                background="#ffda19"
                 @search="onSearch"
                 @cancel="onCancel"
             />
@@ -16,10 +17,17 @@
             finished-text="没有更多了"
             @load="onLoad"
             >
-            <van-cell-group v-for="(item, index) in list" :key="index" >
-                <van-cell :title="item.blog_title" :value="item.createdate" :label="item.blog_content" />
-                <img class="blog_photos" v-for="(img, img_index) in item.photos" :key="img_index" :src="img" alt="">
-            </van-cell-group>
+            <div class="blog-list-box" v-for="(item, index) in list" :key="index">
+                <div class="acvtor"><img src="../assets/timg.gif" alt=""></div>
+                <div class="blog-content">
+                    <div class="name">{{item.blog_title}}</div>
+                    <div class="content">{{item.blog_content}}</div>
+                    <div class="img-list">
+                        <img class="blog_photos" v-for="(img, img_index) in item.photos" :key="img_index" :src="img" alt="">
+                    </div>
+                    <div class="createdate">{{item.createdate}}</div>
+                </div>
+            </div>
         </van-list>
         <foot-bar></foot-bar>
     </div>
@@ -72,7 +80,40 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.blog_photos {
+/* .blog_photos {
+    width: 30%;
+    margin: 1%;
+} */
+.blog-list-box {
+    width: 95%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+.blog-list-box .acvtor {
+    width: 15%;
+    float: left;
+}
+.blog-list-box .acvtor img {
+    width: 100%;
+}
+.blog-list-box .blog-content {
+    width: 80%;
+    float: right;
+}
+.blog-list-box .blog-content .name {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(156, 124, 19);
+}
+.blog-list-box .blog-content .createdate {
+    font-size: 15px;
+    font-weight: lighter;
+    color: gray;
+}
+.blog-list-box .blog-content .img-list {
+    width: 100%;
+}
+.blog-content .img-list img{
     width: 30%;
     margin: 1%;
 }
