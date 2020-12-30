@@ -262,7 +262,7 @@ export default {
                 this.color.className = "remove"
                 this.thickness.className = "remove"
             } else if (element === 'clearall') {
-                ctx.clearRect(0, 0, canvas.width, canvas.height)    //清屏
+                this.ctx.clearRect(0, 0, canvas.width, canvas.height)    //清屏
                 this.eraserEnabled = false
                 this.pen.classList.add("active")
                 this.eraser.classList.remove("active")
