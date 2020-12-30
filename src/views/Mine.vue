@@ -26,9 +26,9 @@
 				<i class="icon-xiezuo icon_comment"><van-icon size="18" name="description" /></i>
 				<p>文章</p>
 			</div>
-			<div>
+			<div @click="createVideoBlog">
 				<i class="icon-tupian icon_comment"><van-icon size="18" name="photo-o" /></i>
-				<p>图片</p>
+				<p>视频</p>
 			</div>
 			<div>
 				<i class="icon-yinyue icon_comment"><van-icon size="18" name="smile-comment-o" /></i>
@@ -98,6 +98,10 @@ export default {
                     user_id: this.user_id
                 }
             })
+        },
+        // 发表视频
+        createVideoBlog() {
+          this.$router.push('/video_edit')
         },
         // 进入聊天室
         enterChat() {
