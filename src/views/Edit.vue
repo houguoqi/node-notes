@@ -1,6 +1,6 @@
 <template>
     <div>
-        <head-bar title="发表"></head-bar>
+        <head-bar title="图文发表"></head-bar>
         <van-form>
             <van-field v-model="title" label="标题" placeholder="请输入标题" />
             <van-field
@@ -92,7 +92,8 @@ export default {
                                     blog_title: this.title,
                                     blog_content: this.content,
                                     photos: JSON.stringify(this.resultQiniuImgages),
-                                    user_id: window.localStorage.getItem('user_id')
+                                    user_id: window.localStorage.getItem('user_id'),
+                                    video: ''
                                 }).then(res => {
                                     console.log(res)
                                     this.$router.push('/home')

@@ -42,8 +42,7 @@
       </el-scrollbar>
     </div>
     <div class="send-info">
-      <el-scrollbar style="height:100%;width:100%;">
-        <el-input
+       <el-input
           type="textarea"
           :rows="2"
           :autosize="{ minRows: 4, maxRows: 40}"
@@ -58,7 +57,6 @@
           style="float:right;margin-right:20px;margin-top:6px;"
           @click="sendInfoBtn"
         >发送(S)</el-button>
-      </el-scrollbar>
     </div>
   </div>
 </template>
@@ -313,7 +311,7 @@ export default {
     }
   }
   .chat-list {
-    height: calc(750px - 62px - 120px);
+    height: calc(750px - 62px - 150px);
     .chat-item {
       display: flex;
       padding: 0 15px;

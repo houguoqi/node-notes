@@ -164,3 +164,7 @@ a:link,a:active,a:visited,a:hover {
     opacity: 0
 }
 
+/* 覆盖组件库样式 */
+.el-message-box {
+    width: 85% !important;
+}

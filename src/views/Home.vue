@@ -22,8 +22,14 @@
                 <div class="blog-content">
                     <div class="name">{{item.blog_title}}</div>
                     <div class="content">{{item.blog_content}}</div>
-                    <div class="img-list">
+                    <div class="img-list" v-if="item.photos && item.photos.length">
                         <img class="blog_photos" v-for="(img, img_index) in item.photos" :key="img_index" :src="img" alt="">
+                    </div>
+                    <div class="img-list" v-else-if="item.video">
+                        <!-- 解决视频不自动播放 -->
+                        <video muted :src="item.video" controls autoplay="autoplay" loop="loop">
+                            <source :src="item.video">
+                        </video>
                     </div>
                     <div class="createdate">{{item.createdate}}</div>
                 </div>
@@ -116,5 +122,8 @@ export default {
 .blog-content .img-list img{
     width: 30%;
     margin: 1%;
+}
+.blog-content .img-list video {
+    width: 30%;
 }
 </style>
