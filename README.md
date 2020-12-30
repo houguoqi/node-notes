@@ -40,3 +40,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 # less 报错解决办法 降低版本
 npm install less@3.9.0 -s
 npm install less-loader@5.0.0 -s
+cnpm install less-loader@5.0.0 less@3.9.0 -s

@@ -7,7 +7,9 @@ const Mine = () => import('../views/Mine.vue')
 const Edit = () => import('../views/Edit.vue')
 const VideoUpload = () => import('../views/VideoUpload.vue')
 const VideoDetail = () => import('../views/VideoDetail.vue')
-const Chat = () => import('../views/wsChat/Chat.vue')
+const Chat = () => import('../views/wsChat/Chat.vue') // 聊天室
+const Panel = () => import('../views/panel/Panel.vue') // 画板
+
 
 Vue.use(Router)
 
@@ -57,6 +59,11 @@ const router = new Router({
             path: '/chat',
             name: 'Chat',
             component: Chat
+        },
+        {
+            path: '/panel',
+            name: 'Panel',
+            component: Panel
         }
     ]
 })

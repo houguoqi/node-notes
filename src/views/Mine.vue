@@ -30,9 +30,9 @@
 				<i class="icon-tupian icon_comment"><van-icon size="18" name="photo-o" /></i>
 				<p>视频</p>
 			</div>
-			<div>
+			<div @click="enterPanel">
 				<i class="icon-yinyue icon_comment"><van-icon size="18" name="smile-comment-o" /></i>
-				<p>收藏</p>
+				<p>画板</p>
 			</div>
 			<div @click="enterChat">
 				<i class="icon-shipin icon_comment"><van-icon size="18" name="chat-o" /></i>
@@ -106,6 +106,10 @@ export default {
         // 进入聊天室
         enterChat() {
           this.$router.push('/chat')
+        },
+        // 进入画板
+        enterPanel() {
+            this.$router.push('/panel')
         },
         // 退出登录
         exitLogin() {

@@ -12,15 +12,17 @@ import "lib-flexible/flexible.js" // rem适配
 import less from 'less'
 import store from "./store/index"; // 暴露全局store
 import axios from "axios";
-
+import Vconsole from 'vconsole' // 调试工具
 import './public/index.css' // 引入公共css
 Vue.prototype.$store = store
 Vue.prototype.$http = axios
 
+const vConsole = new Vconsole()
 
 Vue.use(less)
 Vue.use(Vant);
 Vue.use(ElementUI);
+Vue.use(vConsole)
 Vue.config.productionTip = false
 
 console.log(process.env, "process.env.VUE_APP_BASE_URL")
