@@ -26,8 +26,9 @@
                         <img class="blog_photos" v-for="(img, img_index) in item.photos" :key="img_index" :src="img" alt="">
                     </div>
                     <div class="img-list" v-else-if="item.video">
+                        <div @click="playVideo(item)" class="play-btn"><van-icon size="36" name="play-circle-o" color="#ffda19" /></div>
                         <!-- 解决视频不自动播放 -->
-                        <video muted :src="item.video" controls autoplay="autoplay" loop="loop">
+                        <video muted :src="item.video" :poster="item.video+'?vframe/jpg/offset/0'">
                             <source :src="item.video">
                         </video>
                     </div>
@@ -79,6 +80,13 @@ export default {
         }).catch(err => {
             console.log(err)
         })
+    },
+    playVideo(item) {
+        console.log(item)
+        this.$router.push({
+            name: 'VideoDetail',
+            params: item
+        })
     }
   }
 }
@@ -118,6 +126,7 @@ export default {
 }
 .blog-list-box .blog-content .img-list {
     width: 100%;
+    position: relative;
 }
 .blog-content .img-list img{
     width: 30%;
@@ -125,5 +134,11 @@ export default {
 }
 .blog-content .img-list video {
     width: 30%;
+}
+.img-list .play-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 </style>

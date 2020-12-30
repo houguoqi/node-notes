@@ -6,6 +6,7 @@ const Reg = () => import('../views/Reg.vue')
 const Mine = () => import('../views/Mine.vue')
 const Edit = () => import('../views/Edit.vue')
 const VideoUpload = () => import('../views/VideoUpload.vue')
+const VideoDetail = () => import('../views/VideoDetail.vue')
 const Chat = () => import('../views/wsChat/Chat.vue')
 
 Vue.use(Router)
@@ -42,11 +43,15 @@ const router = new Router({
             name: 'Edit',
             component: Edit
         },
-        ,
         {
             path: '/video_edit',
             name: 'VideoUpload',
             component: VideoUpload
+        },
+        {
+            path: '/video_detail',
+            name: 'VideoDetail',
+            component: VideoDetail
         },
         {
             path: '/chat',
