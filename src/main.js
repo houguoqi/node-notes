@@ -6,6 +6,8 @@ import router from './router'
 import Vant from 'vant'; // Vant组件库
 import 'vant/lib/index.css';
 import 'vant/lib/icon/local.css';
+import ElementUI from 'element-ui'; // elementui
+import 'element-ui/lib/theme-chalk/index.css';
 import "lib-flexible/flexible.js" // rem适配
 import less from 'less'
 import store from "./store/index"; // 暴露全局store
@@ -18,6 +20,7 @@ Vue.prototype.$http = axios
 
 Vue.use(less)
 Vue.use(Vant);
+Vue.use(ElementUI);
 Vue.config.productionTip = false
 
 console.log(process.env, "process.env.VUE_APP_BASE_URL")

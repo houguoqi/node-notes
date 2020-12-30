@@ -5,6 +5,7 @@ const Login = () => import('../views/Login.vue')
 const Reg = () => import('../views/Reg.vue')
 const Mine = () => import('../views/Mine.vue')
 const Edit = () => import('../views/Edit.vue')
+const Chat = () => import('../views/wsChat/Chat.vue')
 
 Vue.use(Router)
 
@@ -39,6 +40,11 @@ const router = new Router({
             path: '/edit',
             name: 'Edit',
             component: Edit
+        },
+        {
+            path: '/chat',
+            name: 'Chat',
+            component: Chat
         }
     ]
 })

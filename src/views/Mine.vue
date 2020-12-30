@@ -3,7 +3,7 @@
         <head-bar title="我的"></head-bar>
         <div class="header">
 			<p><span @click="exitLogin"><i class="icon-shutDown"><van-icon name="setting-o" /></i></span></p>
-		</div>	
+		</div>
         <div class="info">
 			<img src="../assets/images/food1.png" >
 			<p class="info_name"><span>{{userInfo.username}}</span> <i class="icon-nan"></i></p>
@@ -34,9 +34,9 @@
 				<i class="icon-yinyue icon_comment"><van-icon size="18" name="smile-comment-o" /></i>
 				<p>收藏</p>
 			</div>
-			<div>
+			<div @click="enterChat">
 				<i class="icon-shipin icon_comment"><van-icon size="18" name="chat-o" /></i>
-				<p>消息</p>
+				<p>聊天</p>
 			</div>
 		</div>
 		<div class="ui-table">
@@ -98,6 +98,10 @@ export default {
                     user_id: this.user_id
                 }
             })
+        },
+        // 进入聊天室
+        enterChat() {
+          this.$router.push('/chat')
         },
         // 退出登录
         exitLogin() {
@@ -198,7 +202,7 @@ export default {
     float: left;
     width: calc( 100% / 4 );
     text-align: center;
-    
+
 }
 .ui-table {
     float: left;

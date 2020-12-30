@@ -36,3 +36,7 @@ npm test
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 >>>>>>> 6185059 (v1.0)
 >>>>>>> ec5f226 (v1.0.0)
+
+# less 报错解决办法 降低版本
+npm install less@3.9.0 -s
+npm install less-loader@5.0.0 -s
