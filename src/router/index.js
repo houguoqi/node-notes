@@ -3,12 +3,13 @@ import Router from 'vue-router'
 const Home = () => import('../views/Home.vue') // 路由懒加载
 const Login = () => import('../views/Login.vue')
 const Reg = () => import('../views/Reg.vue')
-const Mine = () => import('../views/Mine.vue')
-const Edit = () => import('../views/Edit.vue')
-const VideoUpload = () => import('../views/VideoUpload.vue')
-const VideoDetail = () => import('../views/VideoDetail.vue')
+const Mine = () => import('../views/Mine.vue') // 个人中心
+const Edit = () => import('../views/Edit.vue') // 图文发表
+const VideoUpload = () => import('../views/VideoUpload.vue') // 视频发表
+const VideoDetail = () => import('../views/VideoDetail.vue') // 视频详情
 const Chat = () => import('../views/wsChat/Chat.vue') // 聊天室
 const Panel = () => import('../views/panel/Panel.vue') // 画板
+const GetImg = () => import('../views/panel/GetImg.vue') // 保存画板图片
 
 
 Vue.use(Router)
@@ -64,6 +65,11 @@ const router = new Router({
             path: '/panel',
             name: 'Panel',
             component: Panel
+        },
+        {
+            path: '/panel_img',
+            name: 'GetImg',
+            component: GetImg
         }
     ]
 })

@@ -69,7 +69,7 @@ export default {
         }, {passive: false});
         //1. 初始化数据
         this.canvas = document.getElementById("canvas")
-        this.ctx = canvas.getContext('2d')
+        this.ctx = this.canvas.getContext('2d')
         this.eraserEnabled = false
         this.pen = document.getElementById("pen")
         this.eraser = document.getElementById("eraser")
@@ -262,7 +262,7 @@ export default {
                 this.color.className = "remove"
                 this.thickness.className = "remove"
             } else if (element === 'clearall') {
-                this.ctx.clearRect(0, 0, canvas.width, canvas.height)    //清屏
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)    //清屏
                 this.eraserEnabled = false
                 this.pen.classList.add("active")
                 this.eraser.classList.remove("active")
@@ -270,10 +270,13 @@ export default {
                 this.thickness.className = "active"
             } else if (element === 'save') {
                 let a = document.createElement("a")
-                a.href = canvas.toDataURL()           //获得图片地址
-                a.target = "_blank"
-                a.download = "image.png"
-                a.click()
+                a.href = this.canvas.toDataURL()           //获得图片地址
+                console.log(this.canvas.toDataURL(), '图片地址')
+                window.localStorage.setItem('Panel_imgUrl', this.canvas.toDataURL())
+                this.$router.push('/panel_img')
+                // a.target = "_blank"
+                // a.download = "image.png"
+                // a.click()
             }
         }
     }
@@ -312,8 +315,8 @@ li{
   margin: 4px;
 }
 ul#actions svg{
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   transition: all 0.2s;
 }
 ul#actions svg.active{
@@ -322,8 +325,8 @@ ul#actions svg.active{
 }
 
 ul#color > li{
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   transition: all 0.2s ease-out;
@@ -343,7 +346,7 @@ li#blue{
 
 ul#thickness > li{
   margin: 6px;
-  height: 20px;
+  height: 25px;
   background-color: black;
   box-shadow: 0 0 4px rgba(80, 80, 80, 0.4);
   transition: all 0.2s ease-out;
