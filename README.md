@@ -1,10 +1,5 @@
 # node-notes
-<<<<<<< HEAD
-node-notes
-=======
-<<<<<<< HEAD
-node-notes
-=======
+[在线演示地址](https://www.hgqweb.cn/vue-h5/node-notes/index.html#/home)
 
 > A Vue.js project
 
