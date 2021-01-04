@@ -3,6 +3,7 @@
     <div class="chat-head">
       <!-- <span>{{whoChat}}</span> -->
       <span>芒果皮儿聊天室</span>
+      <span style="margin-left:36px;">在线人数({{liveNumber}})</span>
     </div>
     <div class="chat-list">
       <el-scrollbar style="height:100%;width:100%;">
@@ -77,6 +78,7 @@ export default {
       uid: "",
       img: null,
       // NEW----------//
+      liveNumber: 0,
       avatarURL:
         "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png",
       searchVla: "",
@@ -178,6 +180,7 @@ export default {
         console.log(data);
         let Data = JSON.parse(data.data);
         console.log(Data);
+        this.liveNumber = Data.data && Data.data.length ? Data.data.length : this.liveNumber
         if (Data.event === "connection") {
           this.$notify({
             message: Data.userName + "上线啦",

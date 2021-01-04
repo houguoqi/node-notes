@@ -60,7 +60,9 @@ export default {
                 window.localStorage.setItem('token', res.token)
                 this.$store.commit('setToken', res.token)
                 const user_id = res.userInfo.id
+                const username = res.userInfo.username
                 window.localStorage.setItem('user_id', user_id)
+                window.localStorage.setItem('username', username)
                 this.$router.push({ name: 'Mine', params: { user_id }})
             }).catch(err => {
                 console.log(err)

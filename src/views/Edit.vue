@@ -15,7 +15,7 @@
             />
             <van-uploader
                 v-model="fileList"
-                multiple
+                :multiple="multiple"
                 max-count="9"
                 :after-read="afterRead"
             />
@@ -47,6 +47,7 @@ export default {
             url_es: 'http://hgqweb.cn/',
             resultQiniuImgages: [],
             isLoading: false,
+            multiple: true,
             title: '',
             content: '',
             // 图片信息

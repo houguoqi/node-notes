@@ -2,61 +2,57 @@
     <div>
         <head-bar title="我的"></head-bar>
         <div class="header">
-			<p><span @click="exitLogin"><i class="icon-shutDown"><van-icon name="setting-o" /></i></span></p>
-		</div>
-        <div class="info">
-			<img src="../assets/images/food1.png" >
-			<p class="info_name"><span>{{userInfo.username}}</span> <i class="icon-nan"></i></p>
-			<p class="info_text">正在建设中,敬请期待...</p>
-			<div class="info_item">
-				<p>16</p>
-				<p>关注</p>
-			</div>
-			<div class="info_item">
-				<p>32</p>
-				<p>粉丝</p>
-			</div>
-			<div class="info_item">
-				<p>3</p>
-				<p>动态</p>
-			</div>
-		</div>
-		<div class="iconCon">
-			<div @click="createBlog">
-				<i class="icon-xiezuo icon_comment"><van-icon size="18" name="description" /></i>
-				<p>文章</p>
-			</div>
-			<div @click="createVideoBlog">
-				<i class="icon-tupian icon_comment"><van-icon size="18" name="photo-o" /></i>
-				<p>视频</p>
-			</div>
-			<div @click="enterPanel">
-				<i class="icon-yinyue icon_comment"><van-icon size="18" name="smile-comment-o" /></i>
-				<p>画板</p>
-			</div>
-			<div @click="enterChat">
-				<i class="icon-shipin icon_comment"><van-icon size="18" name="chat-o" /></i>
-				<p>聊天</p>
-			</div>
-		</div>
-		<div class="ui-table">
-			<div class="ui-table-cell">
-				<span>收藏</span>
-				<van-icon name="arrow" />
-			</div>
-			<div>
-				<span>互动</span>
-				<van-icon name="arrow" />
-			</div>
-			<div>
-				<span>反馈</span>
-				<van-icon name="arrow" />
-			</div>
-			<div>
-				<span>关于</span>
-				<van-icon name="arrow" />
-			</div>
-		</div>
+          <p><span @click="exitLogin"><i class="icon-shutDown"><van-icon name="setting-o" /></i> </span></p>
+        </div>
+          <div class="info">
+          <img src="../assets/images/food1.png" >
+          <p class="info_name">欢迎你：<span class="username">{{userInfo.username}}</span> <i class="icon-nan"></i></p>
+          <p class="info_text">部分功能正在建设中...</p>
+          <div class="info_item">
+            <p>99</p>
+            <p>关注</p>
+          </div>
+          <div class="info_item">
+            <p>99</p>
+            <p>粉丝</p>
+          </div>
+          <div class="info_item">
+            <p>99</p>
+            <p>动态</p>
+          </div>
+        </div>
+        <div class="iconCon">
+          <div @click="createBlog">
+            <i class="icon-xiezuo icon_comment"><van-icon size="18" name="description" /></i>
+            <p>文章</p>
+          </div>
+          <div @click="createVideoBlog">
+            <i class="icon-tupian icon_comment"><van-icon size="18" name="photo-o" /></i>
+            <p>视频</p>
+          </div>
+          <div @click="enterPanel">
+            <i class="icon-yinyue icon_comment"><van-icon size="18" name="smile-comment-o" /></i>
+            <p>画板</p>
+          </div>
+          <div @click="enterChat">
+            <i class="icon-shipin icon_comment"><van-icon size="18" name="chat-o" /></i>
+            <p>聊天</p>
+          </div>
+        </div>
+        <div class="ui-table">
+          <div class="ui-table-cell" @click="enterMySaves">
+            <span>收藏</span>
+            <van-icon name="arrow" />
+          </div>
+          <div>
+            <span>关于</span>
+            <van-icon name="arrow" />
+          </div>
+          <div @click="exitLogin">
+            <span>注销</span>
+            <van-icon name="arrow" />
+          </div>
+        </div>
         <foot-bar></foot-bar>
     </div>
 </template>
@@ -73,7 +69,7 @@ export default {
     data () {
         return {
             user_id: '',
-            userInfo: {}
+            userInfo: {},
         }
     },
     mounted() {
@@ -115,11 +111,15 @@ export default {
         exitLogin() {
             window.localStorage.clear()
             this.$router.push('/login')
+        },
+        // 我的收藏
+        enterMySaves() {
+          this.$router.push('/mysave')
         }
     }
 }
 </script>
-<style scoped>
+<style lang="less" scoped>
 .header {
     /* 头部包含背景图 */
     background-color: #ffda19;
@@ -167,10 +167,15 @@ export default {
 }
 .info_name {
     text-align: center;
-    font-size: 16px;
-    color: #444444;
+    font-size: 14px;
+    color: #6F6F6F;
     height: 30px;
     line-height: 30px;
+    .username {
+      color: #9c7c13;
+      font-weight: bold;
+      font-size: 16px;
+    }
 }
 .info_text {
     text-align: center;

@@ -10,6 +10,7 @@ const VideoDetail = () => import('../views/VideoDetail.vue') // 视频详情
 const Chat = () => import('../views/wsChat/Chat.vue') // 聊天室
 const Panel = () => import('../views/panel/Panel.vue') // 画板
 const GetImg = () => import('../views/panel/GetImg.vue') // 保存画板图片
+const MySave = () => import('../views/MySave.vue') // 保存画板图片
 
 
 Vue.use(Router)
@@ -70,6 +71,11 @@ const router = new Router({
             path: '/panel_img',
             name: 'GetImg',
             component: GetImg
+        },
+        {
+            path: '/mysave',
+            name: 'MySave',
+            component: MySave
         }
     ]
 })
