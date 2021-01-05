@@ -60,6 +60,16 @@ export const getMySaves = (params) => {
   return get('/get_my_save', params)
 }
 
+// 上传头像
+export const avatorUpload = (params) => {
+    return post('/upload_avator', params)
+}
+
+// 查询头像
+export const getAvator = (params) => {
+    return get('/get_avator', params)
+}
+
 // 发表
 export const createBlog = (params) => {
     return get('/add_blog', params)

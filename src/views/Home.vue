@@ -14,7 +14,6 @@
             </van-search>
         </form>
         <van-list
-            v-model="loading"
             :finished="finished"
             finished-text="没有更多了"
             @load="onLoad"
@@ -51,7 +50,7 @@
                 </div>
             </div>
         </van-list>
-         <van-empty v-if="!list" description="暂无结果" />
+         <van-empty v-if="!list.length" />
         <foot-bar></foot-bar>
          <!-- 评论输入框 -->
         <div class="comment-input-box" :class="{'blog-list-box-active': isComment}">
@@ -59,6 +58,7 @@
           <button @click="commitConfirm">评论</button>
           <button @click="commitExit">取消</button>
         </div>
+        <van-loading v-show="isloading" class="loading" type="spinner" size="24px" color="#1989fa" vertical></van-loading>
     </div>
 </template>
 
@@ -92,7 +92,8 @@ export default {
       isComment: false,
       isCommentData: {},
       isCommentBlogId: '',
-      autofocus: false
+      autofocus: false,
+      isloading: false
     }
   },
   mounted() {
@@ -100,14 +101,17 @@ export default {
   methods: {
     onSearch() {
         if (!this.value) {
-          Toast('请输入关键字')
+          this.page = 1
+          this.list = []
+          this.onLoad()
           return
         }
-        // Toast(val);
+        this.isloading = true
         searchBlog({
           keyword: this.value
         }).then(res => {
           this.list = []
+          this.isloading = false
           this.list = res.result
         })
     },
@@ -115,13 +119,14 @@ export default {
         Toast('取消');
     },
     async onLoad() {
+        this.isloading = true
         await getAllBlogs({
             page: this.page
         }).then(res => {
             console.log(res)
             if (!res.data.result.length) this.finished = true
             this.list = this.list.concat(res.data.result)
-            this.loading = false
+            this.isloading = false
             this.page++
         }).catch(err => {
             console.log(err)
@@ -295,5 +300,11 @@ export default {
 .blog-list-box-active {
   bottom: 0;
   transition: all .3s;
+}
+.loading {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div class="chat">
+    <head-bar title="聊天室"></head-bar>
     <div class="chat-head">
       <!-- <span>{{whoChat}}</span> -->
       <span>芒果皮儿聊天室</span>
@@ -65,9 +66,11 @@
 <script>
 import WS from "./index";
 import { formatData } from "@/utils/common";
+import headBar from "@/components/headBar.vue";
 export default {
   name: "Chat",
   components: {
+    headBar
   },
   data() {
     return {
@@ -314,7 +317,7 @@ export default {
     }
   }
   .chat-list {
-    height: calc(750px - 62px - 150px);
+    height: calc(750px - 62px - 150px - 46px);
     .chat-item {
       display: flex;
       padding: 0 15px;

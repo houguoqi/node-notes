@@ -1,5 +1,6 @@
 <template>
     <div>
+        <head-bar title="画板"></head-bar>
         <remote-js src="https://at.alicdn.com/t/font_562572_1ybmlb5d2a7fd2t9.js"></remote-js>
         <canvas id="canvas"></canvas>
         <div id="options">
@@ -40,6 +41,7 @@
     </div>
 </template>
 <script>
+import headBar from "@/components/headBar.vue";
 export default {
     components: {
         'remote-js': {
@@ -50,6 +52,7 @@ export default {
                 src: { type: String, required: true },
             },
         },
+        headBar
     },
     data() {
         return {
@@ -294,13 +297,13 @@ body{
 }
 #canvas{
   position: fixed;        /*使手机端不会因触摸而上下滑动*/
-  top:0;
+  top: 46px;
   left: 0;
   background-color: #eee;
 }
 #options{
   position: fixed;        /*使所有选项在canvas之上，此外也可以用z-index达到同样的效果*/
-  top:0;
+  top: 46px;
   right: 0;
   padding: 10px;
 }

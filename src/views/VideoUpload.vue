@@ -62,6 +62,18 @@ export default {
     },
     methods: {
         upload() {
+            if (!this.title) {
+                Toast('未填写标题')
+                return
+            }
+            if (!this.content) {
+                Toast('未填写内容')
+                return
+            }
+            if (!this.fileList.length) {
+                Toast('未选择视频')
+                return
+            }
             console.log(this.fileList, 'zipImgListzipImgList')
             // return
             if (this.fileList.length) {

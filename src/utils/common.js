@@ -11,6 +11,15 @@ export function timeout(delay) {
   })
 }
 
+// 判断是否是微信浏览器
+export function is_weixn(){  
+    var ua = navigator.userAgent.toLowerCase();  
+    if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+        return true;  
+    } else {  
+        return false;  
+    }  
+}  
 
 /**
  * 防抖

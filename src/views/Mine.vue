@@ -6,7 +6,7 @@
         </div>
           <div class="info">
           <img src="../assets/images/food1.png" >
-          <p class="info_name">欢迎你：<span class="username">{{userInfo.username}}</span> <i class="icon-nan"></i></p>
+          <p class="info_name">欢迎你：<span class="username">{{username}}</span> <i class="icon-nan"></i></p>
           <p class="info_text">部分功能正在建设中...</p>
           <div class="info_item">
             <p>99</p>
@@ -44,6 +44,10 @@
             <span>收藏</span>
             <van-icon name="arrow" />
           </div>
+          <div @click="enterHeaderUrl">
+            <span>头像</span>
+            <van-icon name="arrow" />
+          </div>
           <div>
             <span>关于</span>
             <van-icon name="arrow" />
@@ -65,6 +69,11 @@ export default {
     components: {
         footBar,
         headBar
+    },
+    computed: {
+        username () {
+            return window.localStorage.getItem('username')
+        }
     },
     data () {
         return {
@@ -115,6 +124,10 @@ export default {
         // 我的收藏
         enterMySaves() {
           this.$router.push('/mysave')
+        },
+        // 上传头像
+        enterHeaderUrl() {
+            this.$router.push('/headurl')
         }
     }
 }

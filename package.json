@@ -17,6 +17,7 @@
     "better-scroll": "^2.0.7",
     "element-ui": "^2.14.1",
     "exif-js": "^2.3.0",
+    "jquery": "^3.5.1",
     "less": "^3.13.1",
     "less-loader": "^7.2.1",
     "lib-flexible": "^0.3.2",
