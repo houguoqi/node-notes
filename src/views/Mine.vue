@@ -2,7 +2,10 @@
     <div>
         <head-bar title="我的"></head-bar>
         <div class="header">
-          <p><span @click="exitLogin"><i class="icon-shutDown"><van-icon name="setting-o" /></i> </span></p>
+          <p>
+              <span @click="exitLogin"><i class="icon-shutDown"><van-icon name="setting-o" /></i> </span>
+              <span @click="enterHeaderUrl">上传头像</span>
+          </p>
         </div>
           <div class="info">
           <img src="../assets/images/food1.png" >
@@ -42,10 +45,6 @@
         <div class="ui-table">
           <div class="ui-table-cell" @click="enterMySaves">
             <span>收藏</span>
-            <van-icon name="arrow" />
-          </div>
-          <div @click="enterHeaderUrl">
-            <span>头像</span>
             <van-icon name="arrow" />
           </div>
           <div>
@@ -152,8 +151,9 @@ export default {
     font-weight: bold;
 }
 .header > p > span:nth-of-type(2) {
-    display: inline-block;
+    float: right;
     padding-right: 16px;
+    color: #bf8a5c;
 }
 .header > p > span:nth-of-type(2) > i {
     font-size: 18px;
