@@ -67,9 +67,9 @@ export default {
         }
     },
     mounted() {
-        document.body.addEventListener('touchmove', function (e) {
-            e.preventDefault();
-        }, {passive: false});
+        // document.body.addEventListener('touchmove', function (e) {
+        //     e.preventDefault();
+        // }, {passive: false});
         //1. 初始化数据
         this.canvas = document.getElementById("canvas")
         this.ctx = this.canvas.getContext('2d')
