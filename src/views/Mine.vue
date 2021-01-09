@@ -8,7 +8,7 @@
           </p>
         </div>
           <div class="info">
-          <img src="../assets/images/food1.png" >
+          <img :src="avator ? avator : 'http://hgqweb.cn/FlU3cIqu3nhJoxbG87vmMujRz7_1'" >
           <p class="info_name">欢迎你：<span class="username">{{username}}</span> <i class="icon-nan"></i></p>
           <p class="info_text">部分功能正在建设中...</p>
           <div class="info_item">
@@ -62,7 +62,7 @@
 <script>
 import footBar from "@/components/footBar.vue";
 import headBar from "@/components/headBar.vue";
-import { getMineInfo } from "@/http/api.js";
+import { getMineInfo, getAvator } from "@/http/api.js";
 export default {
     name: 'Mine',
     components: {
@@ -78,6 +78,7 @@ export default {
         return {
             user_id: '',
             userInfo: {},
+            avator: ''
         }
     },
     mounted() {
@@ -90,6 +91,17 @@ export default {
         }).then(res => {
             console.log(res)
             this.userInfo = res.result[0]
+        }).catch(err => {
+            console.log(err)
+        })
+
+        // 查询头像
+        getAvator({
+            user_id: this.user_id,
+            username: this.username
+        }).then(res => {
+            console.log(res)
+            this.avator = res.avatorFile
         }).catch(err => {
             console.log(err)
         })

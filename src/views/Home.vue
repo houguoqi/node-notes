@@ -20,7 +20,7 @@
             v-if="list"
             >
             <div class="blog-list-box" v-for="(item, index) in list" :key="index">
-                <div class="acvtor"><img src="../assets/timg.gif" alt=""></div>
+                <div class="acvtor"><img :src="item.avatorurl?item.avatorurl:'http://hgqweb.cn/timg.gif'" alt=""></div>
                 <div class="blog-content">
                     <div class="name">{{item.blog_title}}</div>
                     <div class="content">{{item.blog_content}}</div>
