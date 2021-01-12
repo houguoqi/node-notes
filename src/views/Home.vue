@@ -14,6 +14,7 @@
             </van-search>
         </form>
         <van-list
+            v-model="isloading"
             :finished="finished"
             finished-text="没有更多了"
             @load="onLoad"
