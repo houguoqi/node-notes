@@ -12,6 +12,7 @@ const Panel = () => import('../views/panel/Panel.vue') // 画板
 const GetImg = () => import('../views/panel/GetImg.vue') // 保存画板图片
 const MySave = () => import('../views/MySave.vue') // 保存画板图片
 const HeadUrl = () => import('../views/HeadUrl.vue') // 上传头像
+const HappyIframe = () => import('../views/happy/HappyIframe.vue') // 功能
 
 
 Vue.use(Router)
@@ -82,6 +83,11 @@ const router = new Router({
             path: '/headurl',
             name: 'HeadUrl',
             component: HeadUrl
+        },
+        {
+            path: '/happy',
+            name: 'HappyIframe',
+            component: HappyIframe
         }
     ]
 })
