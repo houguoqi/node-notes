@@ -2,10 +2,22 @@
     <div>
         <head-bar title="功能"></head-bar>
         <div class="video-audio">
-            <van-grid :column-num="2">
-                <van-grid-item @click="enterIframe('video')" icon="tv-o" text="电影" />
-                <van-grid-item @click="enterIframe('audio')" icon="service-o" text="音乐" />
-            </van-grid>
+            <div @click="enterIframe('video')">
+                <van-icon name="tv-o" size="36" color="rgb(241 137 77)" />
+                <p>电影</p>
+            </div>
+            <div @click="enterIframe('audio')">
+                <van-icon name="service-o" size="36" color="rgb(20 210 26)" />
+                <p>音乐</p>
+            </div>
+            <!-- <div @click="enterIframe('video')">
+                <van-icon name="tv-o" size="30" color="#1989fa" />
+                <p>电影</p>
+            </div>
+            <div @click="enterIframe('audio')">
+                <van-icon name="service-o" size="30" color="#1989fa" />
+                <p>音乐</p>
+            </div> -->
         </div>
         <foot-bar></foot-bar>
     </div>
@@ -28,9 +40,11 @@ export default {
         enterIframe(type) {
             switch (type) {
                 case 'video':
+                    // 艾拉拉影视
                     window.location.href = 'http://www.iaila.com/'
                     break;
                 case 'audio':
+                    // 免费下载歌曲
                     window.location.href = 'https://music.sonimei.cn/?name=AINY%E9%82%93%E7%B4%AB%E6%A3%8B&type=netease'
                     break;
                 default:
@@ -43,5 +57,15 @@ export default {
 <style lang="less" scoped>
 .video-audio {
     padding: 20px;
+    text-align: center;
+    div {
+        width: 50%;
+        margin-bottom: 25px;
+        float: left;
+        p {
+            color: #9c9c9c;
+            font-size: 15px;
+        }
+    }
 }
 </style>
